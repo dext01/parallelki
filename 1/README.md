@@ -10,11 +10,9 @@ cmake .. -DUSE_DOUBLE=OFF && make
 ./sine_sum
 
 # Мой результат:
-```
 Тип: float
 Количество элементов: 10000000
 Сумма: 0.291951
-```
 
 # Сборка с double
 rm -rf build
