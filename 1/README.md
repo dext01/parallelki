@@ -24,3 +24,17 @@ cmake .. -DUSE_DOUBLE=ON && make
 Тип: double
 Количество элементов: 10000000
 Сумма: 4.89582e-11
+```
+
+## Пример мейка
+```bash
+all: sine_sum
+
+sine_sum: CMakeFiles/sine_sum.dir/main.cpp.o
+	g++ -O3 CMakeFiles/sine_sum.dir/main.cpp.o -o sine_sum
+
+CMakeFiles/sine_sum.dir/main.cpp.o: ../main.cpp
+	g++ -O3 -std=gnu++14 \
+	   -c ../main.cpp \
+	   -o CMakeFiles/sine_sum.dir/main.cpp.o
+```
