@@ -1,0 +1,8 @@
+nsteps=40000000, threads=1, T_serial=0.1042919159, T_parallel=0.1159820557, Speedup=0.8992073411, Error=0.0000000273
+nsteps=40000000, threads=2, T_serial=0.1079730988, T_parallel=0.0661890507, Speedup=1.6312833868, Error=0.0000000273
+nsteps=40000000, threads=4, T_serial=0.1089692116, T_parallel=0.0342648029, Speedup=3.1802083261, Error=0.0000000273
+nsteps=40000000, threads=7, T_serial=0.0866990089, T_parallel=0.0273880959, Speedup=3.1655727145, Error=0.0000000273
+nsteps=40000000, threads=8, T_serial=0.1107361317, T_parallel=0.0222909451, Speedup=4.9677629820, Error=0.0000000273
+nsteps=40000000, threads=16, T_serial=0.0946090221, T_parallel=0.0186650753, Speedup=5.0687725932, Error=0.0000000273
+nsteps=40000000, threads=20, T_serial=0.1111810207, T_parallel=0.0156459808, Speedup=7.1060435207, Error=0.0000000273
+nsteps=40000000, threads=40, T_serial=0.1088900566, T_parallel=0.0138950348, Speedup=7.8366163349, Error=0.0000000273
