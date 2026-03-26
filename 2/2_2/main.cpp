@@ -9,7 +9,7 @@ double func(double x) {
 
 const double exact_value = std::sqrt(M_PI);
 
-double integrate_omp(double a, double b, int nsteps) {
+double integrate_omp(double a, double b, int nsteps) { // параллельная версия, метод о средних отрезках
     double h = (b - a) / static_cast<double>(nsteps);
     double global_sum = 0.0;
 
@@ -27,7 +27,7 @@ double integrate_omp(double a, double b, int nsteps) {
             local_sum += func(x);
         }
 
-        #pragma omp atomic
+        #pragma omp atomic // синхронизация 1 раз за поток
         global_sum += local_sum;
     }
 
@@ -58,14 +58,14 @@ int main(int argc, char** argv) {
 
     double t_serial = 0.0;
     {
-        omp_set_num_threads(1);
+        omp_set_num_threads(1); // на одном потоке
         double t0 = omp_get_wtime();
         double res = integrate_serial(a, b, nsteps);
         t_serial = omp_get_wtime() - t0;
         volatile double dummy = res; (void)dummy;
     }
 
-    omp_set_num_threads(num_threads);
+    omp_set_num_threads(num_threads); // на н потоках
     double t0 = omp_get_wtime();
     double res_parallel = integrate_omp(a, b, nsteps);
     double t_parallel = omp_get_wtime() - t0;
