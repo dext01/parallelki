@@ -5,28 +5,28 @@
 #include <vector>
 #include <algorithm>
 
-const int N = 13000;           
-const double EPS = 1e-5;     
-const double TAU = 0.01;    
-const double DIAG_VAL = 2.0;   
-const double OFF_DIAG_VAL = 1.0; 
+const int N = 13000; // размер системы
+const double EPS = 1e-5;     //критерий остновки
+const double TAU = 0.01;    // шаг итерационного метода
+const double DIAG_VAL = 2.0;   // диагональ мтарицы
+const double OFF_DIAG_VAL = 1.0;
 
-void matvec(const std::vector<double>& x, std::vector<double>& y) {
-    #pragma omp parallel for
+void matvec(const std::vector<double>& x, std::vector<double>& y) { // параллельно считаем произведение матрицы на вектор
+    #pragma omp parallel for // каждая строка i считается независимо, каждый поток пишет в свой y[i] - гонки нет
     for (int i = 0; i < N; ++i) {
         double sum = 0.0;
         for (int j = 0; j < N; ++j) {
             if (i == j) {
                 sum += DIAG_VAL * x[j];
             } else {
-                sum += OFF_DIAG_VAL * x[j];
+                sum += OFF_DIAG_VAL * x[j]; // локальная переменная у каждого своя
             }
         }
         y[i] = sum;
     }
 }
 
-int solve_variant_1(std::vector<double>& x) {
+int solve_variant_1(std::vector<double>& x) { //1вариант расспараллеливания 
     std::vector<double> Ax(N);
     std::vector<double> residual(N);
     int iterations = 0;
