@@ -1,0 +1,16 @@
+N=20000, Threads=1, T_serial=0.389024, T_parallel=0.390528, Speedup=0.996149
+N=20000, Threads=2, T_serial=0.392411, T_parallel=0.191830, Speedup=2.045619
+N=20000, Threads=4, T_serial=0.389268, T_parallel=0.091099, Speedup=4.273022
+N=20000, Threads=7, T_serial=0.385717, T_parallel=0.042640, Speedup=9.045850
+N=20000, Threads=8, T_serial=0.388509, T_parallel=0.038090, Speedup=10.199767
+N=20000, Threads=16, T_serial=0.387850, T_parallel=0.047996, Speedup=8.080910
+N=20000, Threads=20, T_serial=0.389712, T_parallel=0.048776, Speedup=7.989848
+N=20000, Threads=40, T_serial=0.393388, T_parallel=0.049977, Speedup=7.871371
+N=40000, Threads=1, T_serial=1.510547, T_parallel=1.520093, Speedup=0.993720
+N=40000, Threads=2, T_serial=1.537930, T_parallel=2.337294, Speedup=0.657996
+N=40000, Threads=4, T_serial=1.515251, T_parallel=0.364475, Speedup=4.157352
+N=40000, Threads=7, T_serial=1.552520, T_parallel=0.174569, Speedup=8.893452
+N=40000, Threads=8, T_serial=1.545548, T_parallel=0.215051, Speedup=7.186885
+N=40000, Threads=16, T_serial=1.548952, T_parallel=0.188620, Speedup=8.212020
+N=40000, Threads=20, T_serial=1.544701, T_parallel=0.193544, Speedup=7.981140
+N=40000, Threads=40, T_serial=1.544477, T_parallel=0.198268, Speedup=7.789838
