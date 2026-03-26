@@ -3,6 +3,7 @@
 #include <omp.h>
 #include <iomanip>
 
+//умножение матрицы на вектор
 void matvec_serial(const std::vector<double>& a, const std::vector<double>& b, std::vector<double>& c, int m, int n) {
     for (int i = 0; i < m; ++i) {
         double sum = 0.0;
@@ -13,6 +14,7 @@ void matvec_serial(const std::vector<double>& a, const std::vector<double>& b, s
     }
 }
 
+//параллельно
 void matvec_omp(const std::vector<double>& a, const std::vector<double>& b, std::vector<double>& c, int m, int n) {
     #pragma omp parallel
     {
@@ -32,10 +34,11 @@ void matvec_omp(const std::vector<double>& a, const std::vector<double>& b, std:
     }
 }
 
+//подготока данных для параллельной версии
 void init_data(std::vector<double>& a, std::vector<double>& b, std::vector<double>& c, int m, int n, int num_threads) {
     omp_set_num_threads(num_threads);
 
-    a.assign(m * n, 0.0);
+    a.assign(m * n, 0.0); //выделяем память
     b.assign(n, 0.0);
     c.assign(m, 0.0);
 
@@ -60,6 +63,7 @@ void init_data(std::vector<double>& a, std::vector<double>& b, std::vector<doubl
     }
 }
 
+//время работы последовательной версии
 double measure_serial(int m, int n) {
     std::vector<double> a(m * n);
     std::vector<double> b(n);
@@ -76,6 +80,7 @@ double measure_serial(int m, int n) {
     return omp_get_wtime() - t_start;
 }
 
+//время работы параллельной версии
 double measure_parallel(int m, int n, int num_threads) {
     std::vector<double> a, b, c;
     init_data(a, b, c, m, n, num_threads);
